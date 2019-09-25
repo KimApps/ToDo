@@ -1,5 +1,6 @@
 package com.apps.kim.todo.fragments.datepicker
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import com.apps.kim.todo.R
+import com.apps.kim.todo.fragments.add.AddCallback
 import com.apps.kim.todo.tools.classes.DataController
 import com.apps.kim.todo.tools.extensions.setClickListeners
 import kotlinx.android.synthetic.main.fragment_datepicker.*
@@ -20,8 +22,14 @@ Created by KIM on 25.09.2019
 class DatePickFragment : Fragment(), View.OnClickListener {
 
     lateinit var startDate: MutableLiveData<String>
+    private var callback: DatePickCallback? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         this.retainInstance = true
         return inflater.inflate(R.layout.fragment_datepicker, container, false)
     }
@@ -33,7 +41,7 @@ class DatePickFragment : Fragment(), View.OnClickListener {
 
     private fun initView() {
         startDate = DataController.instance.getStartDate()
-
+        callback?.menuVisibility(false)
         setClickListeners(setStartDate, cancelStartDate)
     }
 
@@ -48,8 +56,10 @@ class DatePickFragment : Fragment(), View.OnClickListener {
                     context, getString(R.string.future_date), Toast.LENGTH_LONG
                 ).show()
                 else {
-                    if (calendar == Calendar.getInstance()) startDate.value = getString(R.string.today)
-                    else startDate.value = "${datePicker.year}.${datePicker.month + 1}.${getDay(datePicker.dayOfMonth)}"
+                    if (calendar == Calendar.getInstance()) startDate.value =
+                        getString(R.string.today)
+                    else startDate.value =
+                        "${datePicker.year}.${datePicker.month + 1}.${getDay(datePicker.dayOfMonth)}"
                     activity?.supportFragmentManager?.popBackStack()
                 }
             }
@@ -61,5 +71,16 @@ class DatePickFragment : Fragment(), View.OnClickListener {
         return if (day < 10) "0$day"
         else day.toString()
     }
+
+    override fun onAttach(context: Context) {
+        if (context is DatePickCallback) callback = context
+        super.onAttach(context)
+    }
+
+    override fun onDetach() {
+        callback = null
+        super.onDetach()
+    }
+
 
 }

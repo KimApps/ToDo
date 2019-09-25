@@ -1,5 +1,6 @@
 package com.apps.kim.todo.fragments.timepicker
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import com.apps.kim.todo.R
+import com.apps.kim.todo.fragments.datepicker.DatePickCallback
 import com.apps.kim.todo.tools.classes.*
 import com.apps.kim.todo.tools.extensions.setClickListeners
 import kotlinx.android.synthetic.main.fragment_timepicker.*
@@ -26,8 +28,14 @@ class TimePickerFragment : Fragment(), View.OnClickListener {
     private lateinit var timeLiveData6: MutableLiveData<String>
     private lateinit var calendar: Calendar
     private var buttonNumber = EMPTY_STRING
+    private var callback: TimePickCallback? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         this.retainInstance = true
         return inflater.inflate(R.layout.fragment_timepicker, container, false)
     }
@@ -38,6 +46,7 @@ class TimePickerFragment : Fragment(), View.OnClickListener {
     }
 
     private fun initView() {
+        callback?.menuVisibility(false)
         buttonNumber = arguments?.getString(BUNDLE_BUTTON) ?: EMPTY_STRING
         timeLiveData1 = DataController.instance.getTimeData1()
         timeLiveData2 = DataController.instance.getTimeData2()
@@ -69,5 +78,15 @@ class TimePickerFragment : Fragment(), View.OnClickListener {
             }
             cancelReminder -> fragmentManager?.popBackStack()
         }
+    }
+
+    override fun onAttach(context: Context) {
+        if (context is TimePickCallback) callback = context
+        super.onAttach(context)
+    }
+
+    override fun onDetach() {
+        callback = null
+        super.onDetach()
     }
 }

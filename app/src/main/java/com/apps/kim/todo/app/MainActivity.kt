@@ -13,6 +13,7 @@ import com.apps.kim.todo.fragments.add.AddCallback
 import com.apps.kim.todo.fragments.add.AddFragment
 import com.apps.kim.todo.fragments.customize.CustomizeCallback
 import com.apps.kim.todo.fragments.customize.CustomizeFragment
+import com.apps.kim.todo.fragments.datepicker.DatePickCallback
 import com.apps.kim.todo.fragments.datepicker.DatePickFragment
 import com.apps.kim.todo.fragments.details.DetailsFragment
 import com.apps.kim.todo.fragments.edit.EditCallback
@@ -21,6 +22,7 @@ import com.apps.kim.todo.fragments.home.HomeCallback
 import com.apps.kim.todo.fragments.home.HomeFragment
 import com.apps.kim.todo.fragments.start.StartCallback
 import com.apps.kim.todo.fragments.start.StartFragment
+import com.apps.kim.todo.fragments.timepicker.TimePickCallback
 import com.apps.kim.todo.fragments.timepicker.TimePickerFragment
 import com.apps.kim.todo.fragments.todolist.TodoListCallback
 import com.apps.kim.todo.fragments.todolist.TodoListFragment
@@ -32,7 +34,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), StartCallback, AddCallback, EditCallback,
-    TodoListCallback, HomeCallback, CustomizeCallback {
+    TodoListCallback, HomeCallback, CustomizeCallback, DatePickCallback, TimePickCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
