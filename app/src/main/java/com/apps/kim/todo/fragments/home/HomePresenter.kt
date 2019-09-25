@@ -31,9 +31,13 @@ class HomePresenter(val view: HomeView) {
         for (reminder in allReminders) {
             val done =
                 "${reminder.title} ${reminder.timeHour} ${reminder.timeMinute} ${date.timeInMillis}"
-            val difference = (date.time.time - (reminder.startDate ?: EMPTY_LONG))
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = reminder?.startDate ?: EMPTY_LONG
+            calendar.set(Calendar.HOUR_OF_DAY, 0)
+            calendar.set(Calendar.MINUTE, 0)
+            val difference = (date.timeInMillis - (calendar.timeInMillis))
             val days = difference / (1000 * 60 * 60 * 24)
-            if (date.time.time >= reminder?.startDate ?: EMPTY_LONG) {
+            if (date.timeInMillis >= calendar.timeInMillis) {
                 if (reminder?.isSpecificDays == true) {
                     if (isTodaySpecificDay(date, reminder)) {
                         if (reminder.isPause == true) {

@@ -15,7 +15,7 @@
             android:title="@string/list"/>
     <item
             android:id="@+id/addNavigation"
-            android:icon="@drawable/icon_add"
+            android:icon="@drawable/ic_add"
             android:title="@string/add"/>
     <item
             android:id="@+id/customizeNavigation"

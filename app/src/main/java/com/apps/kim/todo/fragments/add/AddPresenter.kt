@@ -71,7 +71,7 @@ class AddPresenter(val view: AddView) {
 
     private fun getCalendar(textButton: String, id: Long): Calendar {
         val currentTime = Calendar.getInstance()
-        val startTime = getStartDate()
+        val startTime = getStartDate(textButton)
         startTime.set(Calendar.HOUR_OF_DAY, getHour(textButton))
         startTime.set(Calendar.MINUTE, getMinute(textButton))
         startTime.set(Calendar.SECOND, 0)
@@ -181,7 +181,7 @@ class AddPresenter(val view: AddView) {
             view.getTitle(),
             view.getSpinnerPosition() + 1,
             getPeriod(),
-            getStartDate().time.time,
+            getStartDate(textButton).timeInMillis,
             getTag(),
             getHour(textButton),
             getMinute(textButton),
@@ -201,10 +201,10 @@ class AddPresenter(val view: AddView) {
 
     private fun getHour(textButton: String): Int = (textButton.split(":"))[0].toInt()
     private fun getMinute(textButton: String): Int = (textButton.split(":"))[1].toInt()
-    private fun getStartDate(): Calendar {
+    private fun getStartDate(textButton: String): Calendar {
         val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, 0)
-        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.HOUR_OF_DAY, getHour(textButton))
+        calendar.set(Calendar.MINUTE, getMinute(textButton))
         calendar.set(Calendar.SECOND, 0)
         calendar.set(Calendar.MILLISECOND, 0)
         if (view.getStartDate() != App.instance.getStringApp(R.string.today)) {
