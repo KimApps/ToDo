@@ -90,7 +90,7 @@ class AddPresenter(val view: AddView) {
             isSave = false
             App.instance.toast(R.string.set_title)
         } else {
-            for (name in getMedicineList()) {
+            for (name in getTodoList()) {
                 if (name == view.getTitle()) {
                     isSave = false
                     App.instance.toast(R.string.title_exist)
@@ -166,7 +166,7 @@ class AddPresenter(val view: AddView) {
         return isSave
     }
 
-    private fun getMedicineList(): List<String> {
+    private fun getTodoList(): List<String> {
         val reminders = reminderBox.all
         val list = mutableSetOf<String>()
         for (reminder in reminders) {
@@ -217,10 +217,11 @@ class AddPresenter(val view: AddView) {
 
     private fun getPeriod(): Int {
         return when (view.getSpinnerIntervalPosition()) {
-            1 -> 2
-            2 -> 3
-            3 -> 7
-            else -> 1
+            1 -> 1
+            2 -> 2
+            3 -> 3
+            4 -> 7
+            else -> 0
         }
     }
 

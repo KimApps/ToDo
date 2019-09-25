@@ -52,9 +52,9 @@ class AlarmService : Service() {
 
             if (reminder.isSpecificDays == false) setNotification(reminder)
             else if (isNotify(reminder)) setNotification(reminder)
-            restartAlarm()
+            if (period > 0) restartAlarm()
         }
-        return Service.START_NOT_STICKY
+        return START_NOT_STICKY
     }
 
     private fun setNotification(reminder: TodoDB) {

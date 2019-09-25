@@ -32,7 +32,7 @@ class RebootService : Service() {
         val currentTime = Calendar.getInstance().timeInMillis
         val calendar = reminder?.startDate ?: EMPTY_LONG
         if (currentTime < calendar) startAlarm(reminder, calendar)
-        else startAlarm(reminder, getPeriod(reminder))
+        else if (reminder?.interval ?: 0 > 0) startAlarm(reminder, getPeriod(reminder))
     }
 
     private fun startAlarm(reminder: TodoDB?, calendar: Long) {

@@ -41,27 +41,37 @@ class HomePresenter(val view: HomeView) {
                 if (reminder?.isSpecificDays == true) {
                     if (isTodaySpecificDay(date, reminder)) {
                         if (reminder.isPause == true) {
-                            val historyDate = historyBox.query()
-                                .equal(HistoryDb_.done, done)
-                                .build().find()
-                            if (historyDate.size > 0) list.add(reminder)
+                            if (getHistoryList(done).size > 0) list.add(reminder)
                         } else list.add(reminder)
                     }
                     Collections.sort(list, TimeComparator())
                 } else {
-                    if ((days % (reminder.interval ?: 1)) == EMPTY_LONG && difference >= 0) {
-                        if (reminder?.isPause == true) {
-                            val historyDate = historyBox.query()
-                                .equal(HistoryDb_.done, done)
-                                .build().find()
-                            if (historyDate.size > 0) list.add(reminder)
-                        } else list.add(reminder)
-                        Collections.sort(list, TimeComparator())
+                    if (reminder.interval ?: 0 == 0) {
+                        if (difference == EMPTY_LONG) {
+                            if (reminder?.isPause == true) {
+                                if (getHistoryList(done).size > 0) list.add(reminder)
+                            } else list.add(reminder)
+                            Collections.sort(list, TimeComparator())
+                        }
+                    } else {
+                        if ((days % (reminder.interval ?: 1)) == EMPTY_LONG && difference >= 0) {
+                            if (reminder?.isPause == true) {
+                                if (getHistoryList(done).size > 0) list.add(reminder)
+                            } else list.add(reminder)
+                            Collections.sort(list, TimeComparator())
+                        }
                     }
+
                 }
             }
         }
         return list
+    }
+
+    private fun getHistoryList(done: String): MutableList<HistoryDb> {
+        return historyBox.query()
+            .equal(HistoryDb_.done, done)
+            .build().find()
     }
 
     private fun isTodaySpecificDay(calendar: Calendar, reminder: TodoDB): Boolean {

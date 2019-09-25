@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity(), StartCallback, AddCallback, EditCallba
                 true
             }
             R.id.homeNavigation -> {
-                showHomeFragment()
+                addFragment(HomeFragment(), HOME_FRAGMENT, null)
                 true
             }
             R.id.listNavigation -> {
@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity(), StartCallback, AddCallback, EditCallba
     }
 
     private fun showStartFragment() = addFragment(StartFragment(), START_FRAGMENT, null)
-    override fun showHomeFragment() = addFragment(HomeFragment(), HOME_FRAGMENT, null)
+    override fun showHomeFragment() {navigationBottomView.selectedItemId = R.id.homeNavigation}
     private fun showListFragment() = addFragment(TodoListFragment(), LIST_FRAGMENT, null)
     private fun showAddFragment() = addFragment(AddFragment(), ADD_FRAGMENT, null)
     private fun showCustomizeFragment() = addFragment(CustomizeFragment(), CUSTOMIZE_FRAGMENT, null)
