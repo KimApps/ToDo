@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.IBinder
 import com.apps.kim.todo.app.App
 import com.apps.kim.todo.db.TodoDB
+import com.apps.kim.todo.db.TodoDB_.startDate
 import com.apps.kim.todo.tools.classes.*
 import com.apps.kim.todo.tools.utils.PrefProvider
 import java.util.*
@@ -23,17 +24,21 @@ class RebootService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val reminderBox = App.boxStore.boxFor(TodoDB::class.java)
         val reminders = reminderBox.all
-        for (reminder in reminders) if (reminder?.isPause == false) startAlarm(reminder)
+        for (reminder in reminders) if (reminder?.isPause == false) calculateAlarm(reminder)
         return START_STICKY
     }
 
-    private fun startAlarm(reminder: TodoDB?) {
+    private fun calculateAlarm(reminder: TodoDB?) {
+        val currentTime = Calendar.getInstance().timeInMillis
+        val calendar = reminder?.startDate ?: EMPTY_LONG
+        if (currentTime < calendar) startAlarm(reminder, calendar)
+        else startAlarm(reminder, getPeriod(reminder))
+    }
+
+    private fun startAlarm(reminder: TodoDB?, calendar: Long) {
         val intent = Intent(this, AlarmReceiver::class.java)
         intent.putExtra(DATA_PENDING_ID, reminder?.id)
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = reminder?.startDate ?: EMPTY_LONG
-        calendar.timeInMillis += getPeriod(reminder) * EVERY_DAY
         val pendingIntent =
             PendingIntent.getBroadcast(
                 this, reminder?.id?.toInt()
@@ -42,22 +47,23 @@ class RebootService : Service() {
         when {
             Build.VERSION.SDK_INT >= 23 -> alarmManager.setExactAndAllowWhileIdle(
                 AlarmManager.RTC_WAKEUP,
-                calendar.timeInMillis,
+                calendar,
                 pendingIntent
             )
 
             Build.VERSION.SDK_INT >= 19 -> alarmManager.setExact(
                 AlarmManager.RTC_WAKEUP,
-                calendar.timeInMillis,
+                calendar,
                 pendingIntent
             )
         }
     }
 
-    private fun getPeriod(reminder: TodoDB?): Int {
-        val days: Int
+    private fun getPeriod(reminder: TodoDB?): Long {
+        val currentDay = Calendar.getInstance().timeInMillis
+        var startDate = reminder?.startDate ?: EMPTY_LONG
         if (reminder?.isSpecificDays == true) {
-            days = nextDay(
+            startDate += nextDay(
                 reminder.daySunday,
                 reminder.dayMonday,
                 reminder.dayTuesday,
@@ -65,15 +71,13 @@ class RebootService : Service() {
                 reminder.dayThursday,
                 reminder.dayFriday,
                 reminder.daySaturday
-            )
+            ) * EVERY_DAY
+            while (currentDay > startDate) startDate += 7 * EVERY_DAY
         } else {
-            var startDate = reminder?.startDate ?: EMPTY_LONG
-            val currentDay = Calendar.getInstance().timeInMillis
             while (currentDay > startDate) startDate += (reminder?.interval
                 ?: 1) * EVERY_DAY
-            days =  ((startDate - currentDay) / EVERY_DAY).toInt()
         }
-        return days
+        return startDate
     }
 
     private fun nextDay(vararg weekDay: Int?): Int {

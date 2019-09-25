@@ -29,17 +29,17 @@ class CustomizePresenter(val view: CustomizeView) {
     private var pathBack6 = EMPTY_STRING
 
     fun init(button: String) {
-        val defaultBtnText1 = view.getStringResource(R.string.alarms)
+        val defaultBtnText1 = view.getStringResource(R.string.todo)
         val defaultBtnText2 = view.getStringResource(R.string.family)
-        val defaultBtnText3 = view.getStringResource(R.string.friends)
+        val defaultBtnText3 = view.getStringResource(R.string.alarms)
         val defaultBtnText4 = view.getStringResource(R.string.workout)
         val defaultBtnText5 = view.getStringResource(R.string.medicines)
         val defaultBtnText6 = view.getStringResource(R.string.diet)
         when (button) {
             BUTTON_1 -> {
                 view.setBtnText(PrefProvider.startText1 ?: defaultBtnText1)
-                view.setIconBack(PrefProvider.backImg1 ?: uri + R.drawable.back_alarm)
-                view.setIconImage(PrefProvider.startImg1 ?: uri + R.drawable.btn_alarm)
+                view.setIconBack(PrefProvider.backImg1 ?: uri + R.drawable.back_todo)
+                view.setIconImage(PrefProvider.startImg1 ?: uri + R.drawable.btn_todo)
                 view.setAudioFileName(PrefProvider.soundName1)
             }
             BUTTON_2 -> {
@@ -50,8 +50,8 @@ class CustomizePresenter(val view: CustomizeView) {
             }
             BUTTON_3 -> {
                 view.setBtnText(PrefProvider.startText3 ?: defaultBtnText3)
-                view.setIconBack(PrefProvider.backImg3 ?: uri + R.drawable.back_friend)
-                view.setIconImage(PrefProvider.startImg3 ?: uri + R.drawable.btn_friend)
+                view.setIconBack(PrefProvider.backImg3 ?: uri + R.drawable.back_alarm)
+                view.setIconImage(PrefProvider.startImg3 ?: uri + R.drawable.btn_alarm)
                 view.setAudioFileName(PrefProvider.soundName3)
             }
             BUTTON_4 -> {
@@ -130,7 +130,7 @@ class CustomizePresenter(val view: CustomizeView) {
             BUTTON_1 -> {
                 PrefProvider.remove(PREF_BACK_1)
                 pathBack1 = EMPTY_STRING
-                view.setIconBack(uri + R.drawable.back_medicines)
+                view.setIconBack(uri + R.drawable.back_todo)
             }
             BUTTON_2 -> {
                 PrefProvider.remove(PREF_BACK_2)
@@ -140,7 +140,7 @@ class CustomizePresenter(val view: CustomizeView) {
             BUTTON_3 -> {
                 PrefProvider.remove(PREF_BACK_3)
                 pathBack3 = EMPTY_STRING
-                view.setIconBack(uri + R.drawable.back_friend)
+                view.setIconBack(uri + R.drawable.back_alarm)
             }
             BUTTON_4 -> {
                 PrefProvider.remove(PREF_BACK_4)
@@ -165,7 +165,7 @@ class CustomizePresenter(val view: CustomizeView) {
             BUTTON_1 -> {
                 PrefProvider.remove(PREF_IMG_1)
                 pathImage1 = EMPTY_STRING
-                view.setIconImage(uri + R.drawable.btn_alarm)
+                view.setIconImage(uri + R.drawable.btn_todo)
             }
             BUTTON_2 -> {
                 PrefProvider.remove(PREF_IMG_2)
@@ -175,7 +175,7 @@ class CustomizePresenter(val view: CustomizeView) {
             BUTTON_3 -> {
                 PrefProvider.remove(PREF_IMG_3)
                 pathImage3 = EMPTY_STRING
-                view.setIconImage(uri + R.drawable.btn_friend)
+                view.setIconImage(uri + R.drawable.btn_alarm)
             }
             BUTTON_4 -> {
                 PrefProvider.remove(PREF_IMG_4)
@@ -290,9 +290,9 @@ class CustomizePresenter(val view: CustomizeView) {
     }
 
     fun getTag(): String {
-        return when (PrefProvider.mTag?: TAG_ALARM) {
+        return when (PrefProvider.mTag?: TAG_TODO) {
             TAG_FAMILY -> BUTTON_2
-            TAG_FRIENDS -> BUTTON_3
+            TAG_ALARMS -> BUTTON_3
             TAG_WORKOUT -> BUTTON_4
             TAG_MEDICINES -> BUTTON_5
             TAG_DIET -> BUTTON_6

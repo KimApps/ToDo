@@ -84,7 +84,7 @@ class AlarmService : Service() {
             notification = Notification.Builder(this, CHANNEL_ID)
                 .setContentTitle(
                     "${reminder.title} - ${messageTag(
-                        reminder.requestTag ?: TAG_ALARM
+                        reminder.requestTag ?: TAG_TODO
                     )}"
                 )
                 .setContentText("$hour : ${getMinute(minute)}")
@@ -97,7 +97,7 @@ class AlarmService : Service() {
             notification = Notification.Builder(this)
                 .setContentTitle(
                     "${reminder.title} - ${messageTag(
-                        reminder.requestTag ?: TAG_ALARM
+                        reminder.requestTag ?: TAG_TODO
                     )}"
                 )
                 .setContentText("$hour : ${getMinute(minute)}")
@@ -114,13 +114,13 @@ class AlarmService : Service() {
     }
 
     private fun getSoundUri(reminder: TodoDB): Uri {
-        val notificationSound = reminder.requestTag ?: TAG_ALARM
+        val notificationSound = reminder.requestTag ?: TAG_TODO
         val uri = Settings.System.DEFAULT_NOTIFICATION_URI
         var uriString = EMPTY_STRING
         when (notificationSound) {
-            TAG_ALARM -> uriString = PrefProvider.sound1
+            TAG_TODO -> uriString = PrefProvider.sound1
             TAG_FAMILY -> uriString = PrefProvider.sound2
-            TAG_FRIENDS -> uriString = PrefProvider.sound3
+            TAG_ALARMS -> uriString = PrefProvider.sound3
             TAG_WORKOUT -> uriString = PrefProvider.sound4
             TAG_MEDICINES -> uriString = PrefProvider.sound5
             TAG_DIET -> uriString = PrefProvider.sound6
@@ -182,11 +182,11 @@ class AlarmService : Service() {
     private fun messageTag(tag: String): String {
         return when (tag) {
             TAG_FAMILY -> resources.getString(R.string.family)
-            TAG_FRIENDS -> resources.getString(R.string.friends)
+            TAG_ALARMS -> resources.getString(R.string.alarms)
             TAG_WORKOUT -> resources.getString(R.string.workout)
             TAG_MEDICINES -> resources.getString(R.string.medicines)
             TAG_DIET -> resources.getString(R.string.diet)
-            else -> resources.getString(R.string.alarms)
+            else -> resources.getString(R.string.todo)
         }
     }
 }

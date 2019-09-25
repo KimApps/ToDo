@@ -4,7 +4,7 @@ package com.apps.kim.todo.tools.classes
 Created by KIM on 25.09.2019
  **/
 
-const val BASE_URL = ""
+const val BASE_URL = "http://quotes.rest/"
 const val EMPTY_STRING = ""
 const val EMPTY_INT = 0
 const val EMPTY_LONG = 0L
@@ -70,9 +70,9 @@ const val BUNDLE_BUTTON = "BUNDLE_BUTTON"
 const val BUNDLE_LIST = "BUNDLE_LIST"
 
 //tags
-const val TAG_ALARM = "TAG_ALARM"
+const val TAG_TODO = "TAG_TODO"
 const val TAG_FAMILY = "TAG_FAMILY"
-const val TAG_FRIENDS = "TAG_FRIENDS"
+const val TAG_ALARMS = "TAG_ALARMS"
 const val TAG_MEDICINES = "TAG_MEDICINES"
 const val TAG_WORKOUT = "TAG_WORKOUT"
 const val TAG_DIET = "TAG_DIET"

@@ -1,7 +1,6 @@
 package com.apps.kim.todo.fragments.start
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -49,7 +48,7 @@ class StartFragment : Fragment(), StartView, View.OnClickListener {
     override fun onClick(v: View?) {
         when (v) {
             cardEditStart1 -> {
-                PrefProvider.mTag = TAG_ALARM
+                PrefProvider.mTag = TAG_TODO
                 callback?.showHomeFragment()
                 callback?.changeBackground(presenter.getPath(BUTTON_1))
                 callback?.menuVisibility(true)
@@ -61,7 +60,7 @@ class StartFragment : Fragment(), StartView, View.OnClickListener {
                 callback?.menuVisibility(true)
             }
             cardEditStart3 -> {
-                PrefProvider.mTag = TAG_FRIENDS
+                PrefProvider.mTag = TAG_ALARMS
                 callback?.showHomeFragment()
                 callback?.changeBackground(presenter.getPath(BUTTON_3))
                 callback?.menuVisibility(true)

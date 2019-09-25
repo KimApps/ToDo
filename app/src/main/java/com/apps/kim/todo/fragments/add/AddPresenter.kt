@@ -8,8 +8,7 @@ import com.apps.kim.todo.app.App
 import com.apps.kim.todo.db.TodoDB
 import com.apps.kim.todo.tools.classes.DATA_PENDING_ID
 import com.apps.kim.todo.tools.classes.EMPTY_STRING
-import com.apps.kim.todo.tools.classes.PREF_TAG
-import com.apps.kim.todo.tools.classes.TAG_ALARM
+import com.apps.kim.todo.tools.classes.TAG_TODO
 import com.apps.kim.todo.tools.utils.PrefProvider
 import java.util.*
 
@@ -197,7 +196,7 @@ class AddPresenter(val view: AddView) {
         )
     }
 
-    private fun getTag(): String = PrefProvider.mTag ?: TAG_ALARM
+    private fun getTag(): String = PrefProvider.mTag ?: TAG_TODO
 
     private fun getHour(textButton: String): Int = (textButton.split(":"))[0].toInt()
     private fun getMinute(textButton: String): Int = (textButton.split(":"))[1].toInt()

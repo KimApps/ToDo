@@ -21,7 +21,7 @@ class EditPresenter(val view: EditView) {
     private var startDate: Long? = null
 
     fun initView(title: String) {
-        val tag = PrefProvider.mTag ?: TAG_ALARM
+        val tag = PrefProvider.mTag ?: TAG_TODO
         val reminders = reminderBox
             .query()
             .equal(TodoDB_.requestTag, tag)
@@ -197,7 +197,7 @@ class EditPresenter(val view: EditView) {
         else minute.toString()
     }
 
-    private fun getTag(): String = PrefProvider.mTag ?: TAG_ALARM
+    private fun getTag(): String = PrefProvider.mTag ?: TAG_TODO
 
     private fun getHour(textButton: String): Int = (textButton.split(":"))[0].toInt()
     private fun getMinute(textButton: String): Int = (textButton.split(":"))[1].toInt()

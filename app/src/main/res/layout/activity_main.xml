@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="activities.MainActivity">
+    tools:context="app.MainActivity">
 
     <com.flaviofaria.kenburnsview.KenBurnsView
         android:id="@+id/mainBackground"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/blackAlpha80"
+        android:background="@color/blackAlpha70"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/beige"
         app:layout_behavior=".tools.classes.BottomNavigationBehavior"

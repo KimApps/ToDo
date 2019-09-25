@@ -24,7 +24,7 @@ class HomePresenter(val view: HomeView) {
     fun initList(date: Calendar): MutableList<TodoDB> {
         getQuotes()
         val list = mutableListOf<TodoDB>()
-        val tag = PrefProvider.mTag ?: TAG_ALARM
+        val tag = PrefProvider.mTag ?: TAG_TODO
         val allReminders = reminderBox.query()
             .equal(TodoDB_.requestTag, tag).build().find()
 
@@ -80,7 +80,7 @@ class HomePresenter(val view: HomeView) {
     @SuppressLint("CheckResult")
     private fun getQuotes() {
         Api.instance
-            .reminderApi
+            .todoApi
             .getQuote()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

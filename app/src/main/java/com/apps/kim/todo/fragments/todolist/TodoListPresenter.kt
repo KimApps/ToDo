@@ -6,7 +6,7 @@ import com.apps.kim.todo.app.App
 import com.apps.kim.todo.db.TodoDB
 import com.apps.kim.todo.db.TodoDB_
 import com.apps.kim.todo.tools.classes.EMPTY_STRING
-import com.apps.kim.todo.tools.classes.TAG_ALARM
+import com.apps.kim.todo.tools.classes.TAG_TODO
 import com.apps.kim.todo.tools.utils.PrefProvider
 import java.util.*
 
@@ -18,7 +18,7 @@ class TodoListPresenter(val view: TodoListView) {
     private val todoBox = App.boxStore.boxFor(TodoDB::class.java)
 
     fun getReminderList(): List<String> {
-        val tag = PrefProvider.mTag ?: TAG_ALARM
+        val tag = PrefProvider.mTag ?: TAG_TODO
         val reminders = todoBox.query()
             .equal(TodoDB_.requestTag, tag).build().find()
         val list = mutableSetOf<String>()

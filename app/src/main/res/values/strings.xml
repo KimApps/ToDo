@@ -48,9 +48,9 @@
     <string name="status">STATUS</string>
     <string name="enter_instruction_here">enter instruction here</string>
     <string name="specific_days">Specific days</string>
-    <string name="alarms">Alarms</string>
+    <string name="todo">To do</string>
     <string name="family">Family</string>
-    <string name="friends">Friends</string>
+    <string name="alarms">Alarms</string>
     <string name="workout">Workout</string>
     <string name="medicines">Medicines</string>
     <string name="diet">Diet</string>
