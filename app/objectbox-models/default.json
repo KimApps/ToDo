@@ -25,7 +25,7 @@
     },
     {
       "id": "2:3719858183057249662",
-      "lastPropertyId": "20:1972820201095840679",
+      "lastPropertyId": "22:4968463123683686184",
       "name": "TodoDB",
       "properties": [
         {
@@ -51,14 +51,6 @@
         {
           "id": "6:4220711668968784755",
           "name": "requestTag"
-        },
-        {
-          "id": "7:3405785090177480477",
-          "name": "timeHour"
-        },
-        {
-          "id": "8:3842484034685751027",
-          "name": "timeMinute"
         },
         {
           "id": "9:1166824974603150671",
@@ -107,6 +99,14 @@
         {
           "id": "20:1972820201095840679",
           "name": "finishDate"
+        },
+        {
+          "id": "21:2233533907890855204",
+          "name": "timeHour"
+        },
+        {
+          "id": "22:4968463123683686184",
+          "name": "timeMinute"
         }
       ],
       "relations": [
@@ -125,7 +125,10 @@
   "modelVersionParserMinimum": 4,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    3405785090177480477,
+    3842484034685751027
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

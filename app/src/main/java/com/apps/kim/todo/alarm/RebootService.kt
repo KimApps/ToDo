@@ -9,10 +9,7 @@ import android.os.Build
 import android.os.IBinder
 import com.apps.kim.todo.app.App
 import com.apps.kim.todo.db.TodoDB
-import com.apps.kim.todo.tools.classes.DATA_PENDING_ID
-import com.apps.kim.todo.tools.classes.EMPTY_STRING
-import com.apps.kim.todo.tools.classes.EVERY_DAY
-import com.apps.kim.todo.tools.classes.PREF_PERIODS
+import com.apps.kim.todo.tools.classes.*
 import com.apps.kim.todo.tools.utils.PrefProvider
 import java.util.*
 
@@ -76,7 +73,7 @@ class RebootService : Service() {
             )
         } else {
             val startDate = Calendar.getInstance()
-            startDate.time = reminder?.startDate
+            startDate.timeInMillis = reminder?.startDate?: EMPTY_LONG
             val currentDay = Calendar.getInstance()
             currentDay.apply {
                 set(Calendar.HOUR, 0)

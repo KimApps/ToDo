@@ -6,20 +6,28 @@ import com.apps.kim.todo.app.App
 import com.apps.kim.todo.db.HistoryDb
 import com.apps.kim.todo.db.HistoryDb_
 import com.apps.kim.todo.db.TodoDB
+import com.apps.kim.todo.tools.classes.EMPTY_LONG
 import com.apps.kim.todo.tools.classes.EMPTY_STRING
 
 /**
 Created by KIM on 25.09.2019
  **/
 
-class DetailsPresenter (val view: DetailsView) {
+class DetailsPresenter(val view: DetailsView) {
 
     fun initView(reminders: List<TodoDB>) {
         val reminder = reminders[0]
         setTimes(reminders)
         view.setTitle(reminder.title ?: EMPTY_STRING)
-        view.setInstruction(reminder.instruction ?: App.instance.getStringApp(R.string.instructions_not_specified))
-        view.setStartDate(DateFormat.format("yyyy MMM d", reminder.startDate).toString())
+        view.setInstruction(
+            reminder.instruction ?: App.instance.getStringApp(R.string.instructions_not_specified)
+        )
+        view.setStartDate(
+            DateFormat.format(
+                "yyyy MMM d",
+                reminder.startDate ?: EMPTY_LONG
+            ).toString()
+        )
         if (reminder.isSpecificDays == true) {
             var string = EMPTY_STRING
             if (reminder.daySunday != null) string += "Sunday\n"
@@ -57,7 +65,11 @@ class DetailsPresenter (val view: DetailsView) {
 
     private fun setTimes(reminders: List<TodoDB>) {
         when (reminders.size) {
-            1 -> view.setTime1("${reminders[0].timeHour}:${getMinute(reminders[0].timeMinute ?: 0)}")
+            1 -> view.setTime1(
+                "${reminders[0].timeHour}:${getMinute(
+                    reminders[0].timeMinute ?: 0
+                )}"
+            )
             2 -> {
                 view.setTime1("${reminders[0].timeHour}:${getMinute(reminders[0].timeMinute ?: 0)}")
                 view.timeVisible2(true)

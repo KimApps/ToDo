@@ -181,7 +181,7 @@ class AddPresenter(val view: AddView) {
             view.getTitle(),
             view.getSpinnerPosition() + 1,
             getPeriod(),
-            getStartDate().time,
+            getStartDate().time.time,
             getTag(),
             getHour(textButton),
             getMinute(textButton),

@@ -42,7 +42,7 @@ class AlarmService : Service() {
             .build()
             .findFirst()
         val currentDate = Calendar.getInstance().time
-        if (reminder != null && reminder.startDate ?: currentDate < currentDate) {
+        if (reminder != null && reminder.startDate ?: currentDate.time < currentDate.time) {
             val popupIntent = Intent(applicationContext, PopupService::class.java)
             applicationContext.startService(popupIntent)
             period = reminder.interval ?: 1
@@ -59,7 +59,7 @@ class AlarmService : Service() {
 
     private fun setNotification(reminder: TodoDB) {
         val notifyManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID, getString(R.string.my_chanel),
                 NotificationManager.IMPORTANCE_HIGH
@@ -80,7 +80,7 @@ class AlarmService : Service() {
         val intentMain = Intent(applicationContext, MainActivity::class.java)
         val pendingMain = PendingIntent.getActivity(this, 0, intentMain, 0)
         val notification: Notification?
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notification = Notification.Builder(this, CHANNEL_ID)
                 .setContentTitle(
                     "${reminder.title} - ${messageTag(

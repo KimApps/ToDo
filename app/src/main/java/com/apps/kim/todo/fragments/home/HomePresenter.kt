@@ -31,9 +31,9 @@ class HomePresenter(val view: HomeView) {
         for (reminder in allReminders) {
             val done =
                 "${reminder.title} ${reminder.timeHour} ${reminder.timeMinute} ${date.timeInMillis}"
-            val difference = (date.time.time - (reminder.startDate ?: date.time).time).toInt()
+            val difference = (date.time.time - (reminder.startDate ?: EMPTY_LONG))
             val days = difference / (1000 * 60 * 60 * 24)
-            if (date.time >= reminder?.startDate) {
+            if (date.time.time >= reminder?.startDate ?: EMPTY_LONG) {
                 if (reminder?.isSpecificDays == true) {
                     if (isTodaySpecificDay(date, reminder)) {
                         if (reminder.isPause == true) {
@@ -45,7 +45,7 @@ class HomePresenter(val view: HomeView) {
                     }
                     Collections.sort(list, TimeComparator())
                 } else {
-                    if ((days % (reminder.interval ?: 1)) == 0 && difference >= 0) {
+                    if ((days % (reminder.interval ?: 1)) == EMPTY_LONG && difference >= 0) {
                         if (reminder?.isPause == true) {
                             val historyDate = historyBox.query()
                                 .equal(HistoryDb_.done, done)

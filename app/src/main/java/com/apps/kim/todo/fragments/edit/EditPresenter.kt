@@ -7,10 +7,7 @@ import com.apps.kim.todo.R
 import com.apps.kim.todo.app.App
 import com.apps.kim.todo.db.TodoDB
 import com.apps.kim.todo.db.TodoDB_
-import com.apps.kim.todo.tools.classes.DATA_PENDING_ID
-import com.apps.kim.todo.tools.classes.EMPTY_STRING
-import com.apps.kim.todo.tools.classes.PREF_TAG
-import com.apps.kim.todo.tools.classes.TAG_ALARM
+import com.apps.kim.todo.tools.classes.*
 import com.apps.kim.todo.tools.utils.PrefProvider
 import java.util.*
 
@@ -21,7 +18,7 @@ Created by KIM on 25.09.2019
 class EditPresenter(val view: EditView) {
     private val reminderBox = App.boxStore.boxFor(TodoDB::class.java)
     private lateinit var reminderList: List<TodoDB>
-    private var startDate: Date? = null
+    private var startDate: Long? = null
 
     fun initView(title: String) {
         val tag = PrefProvider.mTag ?: TAG_ALARM
@@ -161,7 +158,7 @@ class EditPresenter(val view: EditView) {
     private fun getCalendar(textButton: String): Calendar {
         val currentTime = Calendar.getInstance()
         val startTime = Calendar.getInstance()
-        startTime.time = startDate
+        startTime.timeInMillis = startDate?: EMPTY_LONG
         startTime.set(Calendar.HOUR_OF_DAY, getHour(textButton))
         startTime.set(Calendar.MINUTE, getMinute(textButton))
         startTime.set(Calendar.SECOND, 0)

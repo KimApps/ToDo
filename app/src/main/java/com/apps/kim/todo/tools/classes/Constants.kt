@@ -6,8 +6,9 @@ Created by KIM on 25.09.2019
 
 const val BASE_URL = ""
 const val EMPTY_STRING = ""
-const val EMPTY_INT_VALUE = 0
-const val DEFAULT_INT_VALUE = -1
+const val EMPTY_INT = 0
+const val EMPTY_LONG = 0L
+const val DEFAULT_INT = -1
 const val TIMEZONE_DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 const val NO_ALPHA = 1F
 const val HALF_ALPHA = .5F

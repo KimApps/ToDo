@@ -12,7 +12,7 @@ Created by KIM on 25.09.2019
  **/
 
 class CustomizePresenter(val view: CustomizeView) {
-    private val uri = "android.resource://com.apps.kim.ereminder/"
+    private val uri = "android.resource://com.apps.kim.todo/"
     private var soundPath = EMPTY_STRING
     private var soundName = EMPTY_STRING
     private var pathImage1 = EMPTY_STRING
