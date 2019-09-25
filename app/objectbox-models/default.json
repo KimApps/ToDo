@@ -1,0 +1,131 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:3270189038980785950",
+      "lastPropertyId": "3:3715064948894459225",
+      "name": "HistoryDb",
+      "properties": [
+        {
+          "id": "1:4694221363796153923",
+          "name": "id"
+        },
+        {
+          "id": "2:242035491049783460",
+          "name": "title"
+        },
+        {
+          "id": "3:3715064948894459225",
+          "name": "done"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:3719858183057249662",
+      "lastPropertyId": "20:1972820201095840679",
+      "name": "TodoDB",
+      "properties": [
+        {
+          "id": "1:6670834327485662149",
+          "name": "id"
+        },
+        {
+          "id": "2:6092080056749324749",
+          "name": "title"
+        },
+        {
+          "id": "3:5938497465433073498",
+          "name": "timePerDay"
+        },
+        {
+          "id": "4:4693862693031594287",
+          "name": "interval"
+        },
+        {
+          "id": "5:6549617400057230296",
+          "name": "startDate"
+        },
+        {
+          "id": "6:4220711668968784755",
+          "name": "requestTag"
+        },
+        {
+          "id": "7:3405785090177480477",
+          "name": "timeHour"
+        },
+        {
+          "id": "8:3842484034685751027",
+          "name": "timeMinute"
+        },
+        {
+          "id": "9:1166824974603150671",
+          "name": "isPause"
+        },
+        {
+          "id": "10:5853025832030859567",
+          "name": "isSpecificDays"
+        },
+        {
+          "id": "11:1558996001473769910",
+          "name": "daySunday"
+        },
+        {
+          "id": "12:5562469088182852140",
+          "name": "dayMonday"
+        },
+        {
+          "id": "13:6166542440970001244",
+          "name": "dayTuesday"
+        },
+        {
+          "id": "14:984018965126872227",
+          "name": "dayWednesday"
+        },
+        {
+          "id": "15:6124109382925679233",
+          "name": "dayThursday"
+        },
+        {
+          "id": "16:2111331348065883812",
+          "name": "dayFriday"
+        },
+        {
+          "id": "17:1870740503694749942",
+          "name": "daySaturday"
+        },
+        {
+          "id": "18:5545094952257900304",
+          "name": "instruction"
+        },
+        {
+          "id": "19:4814114958561895255",
+          "name": "pendingId"
+        },
+        {
+          "id": "20:1972820201095840679",
+          "name": "finishDate"
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:5417928819071554971",
+          "name": "history"
+        }
+      ]
+    }
+  ],
+  "lastEntityId": "2:3719858183057249662",
+  "lastIndexId": "0:0",
+  "lastRelationId": "1:5417928819071554971",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

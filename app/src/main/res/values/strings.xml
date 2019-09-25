@@ -1,0 +1,91 @@
+<resources>
+    <string name="app_name">ToDo</string>
+
+    <string name="home">home</string>
+    <string name="medicine">medicine</string>
+    <string name="list">list</string>
+    <string name="add">add</string>
+    <string name="set_title">Set title please</string>
+    <string name="title_exist">This title already exist</string>
+    <string name="select_day">Please select at least one day</string>
+    <string name="not_all_reminder">Not all reminders are set</string>
+    <string name="settings">settings</string>
+    <string name="login">login</string>
+    <string name="password">password</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="close_app">Do you want to close the app?</string>
+    <string name="email">email</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="first_name">first name</string>
+    <string name="last_name">last name</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="register_by_email">REGISTER by email</string>
+    <string name="log_in">LOG IN</string>
+    <string name="next">NEXT</string>
+    <string name="enter_code">enter code here</string>
+    <string name="we_sent_code">We sent confirmation code on your email</string>
+    <string name="title">title</string>
+    <string name="time">Time</string>
+    <string name="pick_a_time">time</string>
+    <string name="save">Save</string>
+    <string name="set_reminder">set reminder</string>
+    <string name="periods">Periods</string>
+    <string name="today">TODAY</string>
+    <string name="start">start</string>
+    <string name="set_date">Set date</string>
+    <string name="done">DONE</string>
+    <string name="success">Reminders set successfully</string>
+    <string name="stopped">stopped</string>
+    <string name="process">in the process</string>
+    <string name="instructions_not_specified">instructions not specified</string>
+    <string name="delete_message">If you want delete this task and all history about it, press OK \nIf you want only
+        stop notifications and save the history, press CANCEL and use button stop
+    </string>
+    <string name="schedule">SCHEDULE</string>
+    <string name="instruction">INSTRUCTION</string>
+    <string name="start_date">START DATE</string>
+    <string name="status">STATUS</string>
+    <string name="enter_instruction_here">enter instruction here</string>
+    <string name="specific_days">Specific days</string>
+    <string name="alarms">Alarms</string>
+    <string name="family">Family</string>
+    <string name="friends">Friends</string>
+    <string name="workout">Workout</string>
+    <string name="medicines">Medicines</string>
+    <string name="diet">Diet</string>
+    <string name="my_chanel">Care Times notifications</string>
+    <string name="button_text">button text</string>
+    <string name="button_image">button img</string>
+    <string name="set_default">default</string>
+    <string name="background">background</string>
+
+    <!--photopicker-->
+    <string name="pick_image_from_gallery" translatable="false">PICK IMAGE FROM GALLERY</string>
+    <string name="text_images" translatable="false">%1$d Images</string>
+    <string name="text_button_done" translatable="false">Done</string>
+    <string name="text_title_activity_album" translatable="false">Select photos</string>
+    <string name="text_title_dialog_sort_by_album" translatable="false">Sort album by</string>
+    <string name="text_title_dialog_sort_by_photo" translatable="false">Sort photo by</string>
+    <string name="action_sort" translatable="false">Sort</string>
+    <string name="change_start_buttons_and_backgrounds">Customize start buttons and backgrounds</string>
+    <string name="sounds">SOUNDS</string>
+    <string name="choose">choose</string>
+    <string name="future_date">Choose date in future, please</string>
+    <!--photopicker-->
+
+    <string-array name="Times">
+        <item>1 time a day</item>
+        <item>2 times a day</item>
+        <item>3 times a day</item>
+        <item>4 times a day</item>
+        <item>5 times a day</item>
+        <item>6 times a day</item>
+    </string-array>
+    <string-array name="Days">
+        <item>Every day</item>
+        <item>Every 2 days</item>
+        <item>Every 3 days</item>
+        <item>Every 7 days</item>
+    </string-array>
+</resources>
