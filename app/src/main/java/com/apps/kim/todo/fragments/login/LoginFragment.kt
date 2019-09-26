@@ -36,13 +36,14 @@ class LoginFragment : Fragment(), LoginView, View.OnClickListener {
     }
 
     private fun initView() {
-        setClickListeners(btnFacebook, btnGoogle)
+        setClickListeners(btnFacebook, btnGoogle, textLogIn)
     }
 
     override fun onClick(v: View?) {
         when (v) {
             btnFacebook -> callback?.fbAuth()
             btnGoogle -> callback?.googleAuth()
+            textLogIn -> callback?.startMain()
         }
     }
 
