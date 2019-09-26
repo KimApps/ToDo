@@ -87,4 +87,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     // multidex
     implementation 'androidx.multidex:multidex:2.0.1'
+    //facebook auth
+    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
+    //google auth
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
 }

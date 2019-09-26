@@ -2,23 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:id="@+id/startNavigation"
-            android:icon="@drawable/icon_start"
-            android:title="@string/start"/>
+        android:id="@+id/startNavigation"
+        android:icon="@drawable/icon_start"
+        android:title="@string/start" />
     <item
-            android:id="@+id/homeNavigation"
-            android:icon="@drawable/ic_home"
-            android:title="@string/home"/>
+        android:id="@+id/homeNavigation"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
     <item
-            android:id="@+id/listNavigation"
-            android:icon="@drawable/icon_list"
-            android:title="@string/list"/>
+        android:id="@+id/addNavigation"
+        android:icon="@drawable/ic_add"
+        android:title="@string/add" />
     <item
-            android:id="@+id/addNavigation"
-            android:icon="@drawable/ic_add"
-            android:title="@string/add"/>
+        android:id="@+id/listNavigation"
+        android:icon="@drawable/icon_list"
+        android:title="@string/list" />
+
     <item
-            android:id="@+id/customizeNavigation"
-            android:icon="@drawable/icon_settings"
-            android:title="@string/settings"/>
+        android:id="@+id/customizeNavigation"
+        android:icon="@drawable/icon_settings"
+        android:title="@string/settings" />
 </menu>

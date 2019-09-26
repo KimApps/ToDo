@@ -68,16 +68,6 @@ class AddPresenter(val view: AddView) {
         }
     }
 
-    private fun getCalendar(textButton: String, id: Long): Calendar {
-        val currentTime = Calendar.getInstance()
-        val startTime = getStartDate(textButton)
-        startTime.set(Calendar.HOUR_OF_DAY, getHour(textButton))
-        startTime.set(Calendar.MINUTE, getMinute(textButton))
-        startTime.set(Calendar.SECOND, 0)
-        while (currentTime > startTime) startTime.add(Calendar.DATE, getPeriod())
-        return startTime
-    }
-
     private fun getServiceIntent(id: Long): Intent {
         val intent = view.getServiceIntent(id.toInt())
         intent.putExtra(DATA_PENDING_ID, id)
@@ -215,6 +205,37 @@ class AddPresenter(val view: AddView) {
         return calendar
     }
 
+    private fun getCalendar(textButton: String, id: Long): Calendar {
+        val currentTime = Calendar.getInstance()
+        val startTime = getStartDate(textButton)
+        startTime.set(Calendar.HOUR_OF_DAY, getHour(textButton))
+        startTime.set(Calendar.MINUTE, getMinute(textButton))
+        startTime.set(Calendar.SECOND, 0)
+        if (currentTime > startTime) {
+            val period: Int
+            if (view.isSpecificDays()) {
+                period = nextDay(
+                    view.getSunday(),
+                    view.getMonday(),
+                    view.getTuesday(),
+                    view.getWednesday(),
+                    view.getThursday(),
+                    view.getFriday(),
+                    view.getSaturday()
+                )
+                startTime.add(Calendar.DATE, period)
+                while (currentTime > startTime) startTime.add(Calendar.DATE, 7)
+            } else {
+                period = getPeriod()
+                if (period > 0) {
+                    while (currentTime > startTime) startTime.add(Calendar.DATE, period)
+                }
+            }
+
+        }
+        return startTime
+    }
+
     private fun getPeriod(): Int {
         return when (view.getSpinnerIntervalPosition()) {
             1 -> 1
@@ -223,6 +244,20 @@ class AddPresenter(val view: AddView) {
             4 -> 7
             else -> 0
         }
+    }
+
+    private fun nextDay(vararg weekDay: Int?): Int {
+        val days = arrayListOf<Int>()
+        val calendar = Calendar.getInstance()
+        val currentDay = calendar.get(Calendar.DAY_OF_WEEK)
+        for (day in weekDay) {
+            if (day != null) {
+                if (currentDay <= day) days.add(day - currentDay)
+                else days.add(day + 7 - currentDay)
+            }
+        }
+        days.sort()
+        return days[0]
     }
 
     fun showButtons(position: Int) {
