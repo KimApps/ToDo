@@ -9,12 +9,10 @@ import androidx.fragment.app.Fragment
 import com.apps.kim.todo.R
 import com.apps.kim.todo.fragments.login.LoginCallback
 import com.apps.kim.todo.fragments.login.LoginFragment
-import com.apps.kim.todo.tools.classes.DETAILS_FRAGMENT
 import com.apps.kim.todo.tools.classes.EMPTY_STRING
 import com.apps.kim.todo.tools.classes.LOGIN_FRAGMENT
 import com.apps.kim.todo.tools.classes.UserFacebookModel
 import com.facebook.*
-import com.facebook.appevents.AppEventsLogger
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.Auth
@@ -26,6 +24,12 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_login.*
+import android.content.pm.PackageManager
+import android.util.Base64
+
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
+
 
 class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
     LoginCallback {
@@ -51,6 +55,25 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         addFragment(LoginFragment(), LOGIN_FRAGMENT)
         initFacebook()
         initOnGoogle()
+
+//        try {
+//            val info = packageManager.getPackageInfo(
+//                "com.apps.kim.todo",
+//                PackageManager.GET_SIGNATURES
+//            )
+//            for (signature in info.signatures) {
+//                val md = MessageDigest.getInstance("SHA")
+//                md.update(signature.toByteArray())
+//                val d = Base64.encodeToString(md.digest(), Base64.DEFAULT)
+//                Log.d("KeyHash:", d)
+//            }
+//        } catch (e: PackageManager.NameNotFoundException) {
+//
+//        } catch (e: NoSuchAlgorithmException) {
+//
+//        }
+
+
     }
 
     private fun addFragment(fragment: Fragment, tagFragment: String) {
