@@ -198,7 +198,7 @@ class CustomizePresenter(val view: CustomizeView) {
     private fun ifComplete(): Boolean = view.getBtnText().isNotEmpty()
 
     fun onGalleryImageResult(data: Intent, requestCode: Int) {
-        val path = data.extras.getStringArrayList(KEY_DATA_RESULT)[0] ?: EMPTY_STRING
+        val path = data.extras?.getStringArrayList(KEY_DATA_RESULT)?.get(0) ?: EMPTY_STRING
         when (requestCode) {
             REQUEST_GALLERY_IMG1 -> {
                 pathImage1 = path

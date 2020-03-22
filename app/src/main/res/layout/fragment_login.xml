@@ -121,20 +121,6 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
-        <ImageView
-            android:id="@+id/btnFacebook"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="10dp"
-            android:elevation="2dp"
-            android:padding="8dp"
-            android:src="@drawable/facebook_logo"
-            app:layout_constraintBottom_toTopOf="@+id/guideline611"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline311"
-            app:layout_constraintTop_toTopOf="@+id/guideline511" />
-
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -149,23 +135,6 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline611"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="@+id/guideline511" />
-
-
-        <ImageView
-            android:id="@+id/btnGoogle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:elevation="2dp"
-            android:padding="8dp"
-            android:src="@drawable/google_icon"
-            app:layout_constraintBottom_toTopOf="@+id/guideline611"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/btnFacebook"
-            app:layout_constraintTop_toTopOf="@+id/guideline511" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

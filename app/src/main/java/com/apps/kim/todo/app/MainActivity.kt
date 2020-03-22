@@ -91,42 +91,51 @@ class MainActivity : AppCompatActivity(), StartCallback, AddCallback, EditCallba
         }
     }
 
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.startNavigation -> {
-                clearStack(0)
-                showStartFragment()
-                true
+    private val mOnNavigationItemSelectedListener =
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.startNavigation -> {
+                    clearStack(0)
+                    showStartFragment()
+                    true
+                }
+                R.id.homeNavigation -> {
+                    addFragment(HomeFragment(), HOME_FRAGMENT, null)
+                    true
+                }
+                R.id.listNavigation -> {
+                    showListFragment()
+                    true
+                }
+                R.id.addNavigation -> {
+                    showAddFragment()
+                    true
+                }
+                R.id.customizeNavigation -> {
+                    showCustomizeFragment()
+                    true
+                }
+                else -> super.onOptionsItemSelected(item)
             }
-            R.id.homeNavigation -> {
-                addFragment(HomeFragment(), HOME_FRAGMENT, null)
-                true
-            }
-            R.id.listNavigation -> {
-                showListFragment()
-                true
-            }
-            R.id.addNavigation -> {
-                showAddFragment()
-                true
-            }
-            R.id.customizeNavigation -> {
-                showCustomizeFragment()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
         }
-    }
 
     private fun showStartFragment() = addFragment(StartFragment(), START_FRAGMENT, null)
-    override fun showHomeFragment() {navigationBottomView.selectedItemId = R.id.homeNavigation}
+    override fun showHomeFragment() {
+        navigationBottomView.selectedItemId = R.id.homeNavigation
+    }
+
     private fun showListFragment() = addFragment(TodoListFragment(), LIST_FRAGMENT, null)
     private fun showAddFragment() = addFragment(AddFragment(), ADD_FRAGMENT, null)
     private fun showCustomizeFragment() = addFragment(CustomizeFragment(), CUSTOMIZE_FRAGMENT, null)
     override fun showDatePickFragment() = addFragment(DatePickFragment(), DATE_FRAGMENT, null)
-    override fun showTimePickFragment(bundle: Bundle) = addFragment(TimePickerFragment(), TIME_FRAGMENT, bundle)
-    override fun showDetailsFragment(bundle: Bundle) = addFragment(DetailsFragment(), DETAILS_FRAGMENT, bundle)
-    override fun showEditFragment(bundle: Bundle) = addFragment(EditFragment(), EDIT_FRAGMENT, bundle)
+    override fun showTimePickFragment(bundle: Bundle) =
+        addFragment(TimePickerFragment(), TIME_FRAGMENT, bundle)
+
+    override fun showDetailsFragment(bundle: Bundle) =
+        addFragment(DetailsFragment(), DETAILS_FRAGMENT, bundle)
+
+    override fun showEditFragment(bundle: Bundle) =
+        addFragment(EditFragment(), EDIT_FRAGMENT, bundle)
 
     private fun setMenuItem(tag: String) {
         when (tag) {

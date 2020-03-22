@@ -10,15 +10,19 @@
       "properties": [
         {
           "id": "1:4694221363796153923",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 3
         },
         {
           "id": "2:242035491049783460",
-          "name": "title"
+          "name": "title",
+          "type": 9
         },
         {
           "id": "3:3715064948894459225",
-          "name": "done"
+          "name": "done",
+          "type": 9
         }
       ],
       "relations": []
@@ -30,89 +34,127 @@
       "properties": [
         {
           "id": "1:6670834327485662149",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 3
         },
         {
           "id": "2:6092080056749324749",
-          "name": "title"
+          "name": "title",
+          "type": 9
         },
         {
           "id": "3:5938497465433073498",
-          "name": "timePerDay"
+          "name": "timePerDay",
+          "type": 5,
+          "flags": 2
         },
         {
           "id": "4:4693862693031594287",
-          "name": "interval"
+          "name": "interval",
+          "type": 5,
+          "flags": 2
         },
         {
           "id": "5:6549617400057230296",
-          "name": "startDate"
+          "name": "startDate",
+          "type": 6,
+          "flags": 2
         },
         {
           "id": "6:4220711668968784755",
-          "name": "requestTag"
+          "name": "requestTag",
+          "type": 9
         },
         {
           "id": "9:1166824974603150671",
-          "name": "isPause"
+          "name": "isPause",
+          "type": 1,
+          "flags": 2
         },
         {
           "id": "10:5853025832030859567",
-          "name": "isSpecificDays"
+          "name": "isSpecificDays",
+          "type": 1,
+          "flags": 2
         },
         {
           "id": "11:1558996001473769910",
-          "name": "daySunday"
+          "name": "daySunday",
+          "type": 5,
+          "flags": 2
         },
         {
           "id": "12:5562469088182852140",
-          "name": "dayMonday"
+          "name": "dayMonday",
+          "type": 5,
+          "flags": 2
         },
         {
           "id": "13:6166542440970001244",
-          "name": "dayTuesday"
+          "name": "dayTuesday",
+          "type": 5,
+          "flags": 2
         },
         {
           "id": "14:984018965126872227",
-          "name": "dayWednesday"
+          "name": "dayWednesday",
+          "type": 5,
+          "flags": 2
         },
         {
           "id": "15:6124109382925679233",
-          "name": "dayThursday"
+          "name": "dayThursday",
+          "type": 5,
+          "flags": 2
         },
         {
           "id": "16:2111331348065883812",
-          "name": "dayFriday"
+          "name": "dayFriday",
+          "type": 5,
+          "flags": 2
         },
         {
           "id": "17:1870740503694749942",
-          "name": "daySaturday"
+          "name": "daySaturday",
+          "type": 5,
+          "flags": 2
         },
         {
           "id": "18:5545094952257900304",
-          "name": "instruction"
+          "name": "instruction",
+          "type": 9
         },
         {
           "id": "19:4814114958561895255",
-          "name": "pendingId"
+          "name": "pendingId",
+          "type": 5,
+          "flags": 2
         },
         {
           "id": "20:1972820201095840679",
-          "name": "finishDate"
+          "name": "finishDate",
+          "type": 6,
+          "flags": 2
         },
         {
           "id": "23:4464498383757431525",
-          "name": "timeHour"
+          "name": "timeHour",
+          "type": 5,
+          "flags": 2
         },
         {
           "id": "24:7691753109413190492",
-          "name": "timeMinute"
+          "name": "timeMinute",
+          "type": 5,
+          "flags": 2
         }
       ],
       "relations": [
         {
           "id": "1:5417928819071554971",
-          "name": "history"
+          "name": "history",
+          "targetId": "1:3270189038980785950"
         }
       ]
     }
@@ -121,8 +163,8 @@
   "lastIndexId": "0:0",
   "lastRelationId": "1:5417928819071554971",
   "lastSequenceId": "0:0",
-  "modelVersion": 4,
-  "modelVersionParserMinimum": 4,
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
